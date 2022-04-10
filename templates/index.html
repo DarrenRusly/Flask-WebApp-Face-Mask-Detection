@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mask Detector</title>
+        <link rel="stylesheet" href="/static/stylesheets/style.css">
+    </head>
+    <body>
+        <div class='header'>
+            <h1>Mask Detector</h1>
+        </div>
+        <div class="workspace">
+            <div class="image-box">
+                {% if data is not none %}
+                    <img src="{{data[0]}}">
+                {% endif %}
+            </div>
+            <div class="prediction">
+                {% if data is not none %}
+                    {% if data[1] == true %}
+                        <h2 class="pred-result">Predict result: With Mask</h2>
+                    {% else %}
+                        <h2 class="pred-result">Predict result: Without Mask</h2>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <form action="/predict" method="post" enctype=multipart/form-data style="margin: 5px 0px 0px 10%; width: 100%;">
+                            <input type="file" name='file' accept='image/*' style="color:white; background-color: black; padding: 10px 5px 0px 10px; width: 62%; height: 30px; margin-left: 52.5px; border: 3px solid gray;"><br>
+                            <input type="submit" value="Predict" style="width:120px; height:50px; margin: 5% 0px auto 30%; font-size:18px; border-radius: 8px;">
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+</html>
